@@ -75,7 +75,8 @@ def processOrders():
 #         print("costPerItem", i['costPerItem'])
 
 class main:
-    data = json.load(sys.stdin)
+    f = open('data.json')
+    data = json.load(f)
 
     for p in data['products']:
         currProduct = Product(p['productId'], p['description'], p['quantityOnHand'], p['reorderThreshold'], p['reorderAmount'], p['deliveryLeadTime'])
@@ -84,6 +85,8 @@ class main:
     for o in data['orders']:
         currOrder = Order(o['orderId'], o['status'], o['dateCreated'], o['items'])
         orders.append(currOrder)
+
+    f.close()
 
     restock()
     processOrders()
