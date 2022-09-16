@@ -1,4 +1,4 @@
-import sys, json
+import json
 from Order import Order
 from OrderStatus import OrderStatus
 from Product import Product
